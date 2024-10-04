@@ -11,7 +11,6 @@ import 'screens/home_screen.dart';
 import 'services/auth_service.dart';
 import 'screens/data.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -41,13 +40,34 @@ class MyApp extends StatelessWidget {
           '/': (context) => WelcomeScreen(),
           '/login': (context) => LoginScreen(),
           '/register': (context) => RegisterScreen(),
-          //'/home': (context) => HomeScreen(),
+          '/home': (context) => HomeScreen(),
           '/category': (context) => CategoryPage(),
-          '/vegetables': (context) => CategoryItemPage(title: 'Vegetables', items: vegetableItems, categoryName: '',),
-          '/fruits': (context) => CategoryItemPage(title: 'Fruits', items: fruitItems, categoryName: '',),
-          '/bags': (context) => CategoryItemPage(title: 'Bags', items: bagItems, categoryName: '',),
-          '/cloths': (context) => CategoryItemPage(title: 'Cloths', items: clothItems, categoryName: '',),
-          '/kitchen': (context) => CategoryItemPage(title: 'Kitchen', items: kitchenItems, categoryName: '',),
+          // Category Item Routes
+          '/vegetables': (context) => CategoryItemPage(
+            title: 'Vegetables',
+            items: vegetableItems,
+            categoryName: 'Vegetables',
+          ),
+          '/fruits': (context) => CategoryItemPage(
+            title: 'Fruits',
+            items: fruitItems,
+            categoryName: 'Fruits',
+          ),
+          '/bags': (context) => CategoryItemPage(
+            title: 'Bags',
+            items: bagItems,
+            categoryName: 'Bags',
+          ),
+          '/cloths': (context) => CategoryItemPage(
+            title: 'Cloths',
+            items: clothItems,
+            categoryName: 'Cloths',
+          ),
+          '/kitchen': (context) => CategoryItemPage(
+            title: 'Kitchen Items',
+            items: kitchenItems,
+            categoryName: 'Kitchen',
+          ),
         },
       ),
     );

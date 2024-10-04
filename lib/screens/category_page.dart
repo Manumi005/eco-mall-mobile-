@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'category_item_page.dart'; // Import the CategoryItemsPage
 import 'favorite_page.dart'; // Import the FavoritePage
-import 'cart.dart';
+import 'cart.dart'; // Import CartPage
+import 'feedback.dart'; // Import FeedbackPage
 
 // Sample data for category items
 final Map<String, List<Map<String, dynamic>>> categoryItems = {
@@ -13,257 +14,257 @@ final Map<String, List<Map<String, dynamic>>> categoryItems = {
       'price': 200.0,
       'isVegetableOrFruit': true,
     },
-    {
-      'title': 'Carrot',
-      'imagePath': 'assets/images/carrot.png',
-      'description': 'Crunchy and sweet carrots',
-      'price': 600.0,
-      'isVegetableOrFruit': true,
-    },
-    {
-      'title': 'Cabbage',
-      'imagePath': 'assets/images/cabbage.png',
-      'description': 'Healthy green cabbage',
-      'price': 150.0,
-      'isVegetableOrFruit': true,
-    },
-    {
-      'title': 'Cucumber',
-      'imagePath': 'assets/images/cucumber.png',
-      'description': 'Cool and refreshing cucumbers',
-      'price': 300.0,
-      'isVegetableOrFruit': true,
-    },
-    {
-      'title': 'Pumpkin',
-      'imagePath': 'assets/images/pumpkin.png',
-      'description': 'Rich and flavorful pumpkins',
-      'price': 250.0,
-      'isVegetableOrFruit': true,
-    },
-    {
-      'title': 'Beetroot',
-      'imagePath': 'assets/images/beetroot.png',
-      'description': 'Fresh and healthy beetroots',
-      'price': 300.0,
-      'isVegetableOrFruit': true,
-    },
-  ],
-  'Fruits': [
-    {
-      'title': 'Apple',
-      'imagePath': 'assets/images/apple.png',
-      'description': 'Crispy and sweet apples',
-      'price': 200.0,
-      'isVegetableOrFruit': true,
-    },
-    {
-      'title': 'Banana',
-      'imagePath': 'assets/images/banana.png',
-      'description': 'Rich in potassium',
-      'price': 600.0,
-      'isVegetableOrFruit': true,
-    },
-    {
-      'title': 'Strawberry',
-      'imagePath': 'assets/images/strawberry.png',
-      'description': 'Fresh strawberries',
-      'price': 500.0,
-      'isVegetableOrFruit': true,
-    },
-    {
-      'title': 'Grapes',
-      'imagePath': 'assets/images/grapes.png',
-      'description': 'Juicy grapes',
-      'price': 600.0,
-      'isVegetableOrFruit': true,
-    },
-    {
-      'title': 'Mango',
-      'imagePath': 'assets/images/mango.png',
-      'description': 'Sweet mangoes',
-      'price': 200.0,
-      'isVegetableOrFruit': true,
-    },
-    {
-      'title': 'Avocado',
-      'imagePath': 'assets/images/avocado.png',
-      'description': 'Creamy and nutritious avocados',
-      'price': 700.0,
-      'isVegetableOrFruit': true,
-    },
-    {
-      'title': 'Blueberries',
-      'imagePath': 'assets/images/blueberries.png',
-      'description': 'Fresh and sweet blueberries',
-      'price': 900.0,
-      'isVegetableOrFruit': true,
-    },
-    {
-      'title': 'Orange',
-      'imagePath': 'assets/images/orange.png',
-      'description': 'Juicy and tangy oranges',
-      'price': 400.0,
-      'isVegetableOrFruit': true,
-    },
-  ],
-  'Bags': [
-    {
-      'title': 'Beach Bag',
-      'imagePath': 'assets/images/beach_bag.png',
-      'description': 'Stylish beach bag',
-      'price': 500.0,
-      'isVegetableOrFruit': false,
-    },
-    {
-      'title': 'Gift Bag',
-      'imagePath': 'assets/images/gift_bag.png',
-      'description': 'Beautiful gift bag',
-      'price': 200.0,
-      'isVegetableOrFruit': false,
-    },
-    {
-      'title': 'Lunch Bag',
-      'imagePath': 'assets/images/lunch_bag.png',
-      'description': 'Insulated lunch bag',
-      'price': 300.0,
-      'isVegetableOrFruit': false,
-    },
-    {
-      'title': 'Tote Bag',
-      'imagePath': 'assets/images/tote_bag.png',
-      'description': 'Versatile tote bag',
-      'price': 250.0,
-      'isVegetableOrFruit': false,
-    },
-    {
-      'title': 'Bamboo Bag',
-      'imagePath': 'assets/images/bamboo_bag.jpeg',
-      'description': 'Stylish bamboo bag',
-      'price': 2500.0,
-      'isVegetableOrFruit': false,
-    },
-    {
-      'title': 'Grocery Bag',
-      'imagePath': 'assets/images/grocery_bag.png',
-      'description': 'Organic Cotton Grocery bag',
-      'price': 1000.0,
-      'isVegetableOrFruit': false,
-    },
-    {
-      'title': 'Grocery Bag',
-      'imagePath': 'assets/images/grocery.png',
-      'description': 'Organic Cotton Grocery Bags',
-      'price': 500.0,
-      'isVegetableOrFruit': false,
-    },
-  ],
-  'Cloths': [
-    {
-      'title': 'T-shirt',
-      'imagePath': 'assets/images/t-shirt.png',
-      'description': 'Comfortable cotton t-shirt',
-      'price': 300.0,
-      'isVegetableOrFruit': false,
-    },
-    {
-      'title': 'Socks',
-      'imagePath': 'assets/images/socks.png',
-      'description': 'Warm woolen socks',
-      'price': 100.0,
-      'isVegetableOrFruit': false,
-    },
-    {
-      'title': 'Towels',
-      'imagePath': 'assets/images/towels.png',
-      'description': 'Soft and absorbent towels',
-      'price': 150.0,
-      'isVegetableOrFruit': false,
-    },
-    {
-      'title': 'Cotton Cloth',
-      'imagePath': 'assets/images/cotton_cloth.png',
-      'description': 'High-quality cotton cloth',
-      'price': 200.0,
-      'isVegetableOrFruit': false,
-    },
-    {
-      'title': 'Hat',
-      'imagePath': 'assets/images/hats.jpg',
-      'description': 'Stylish and comfortable hat',
-      'price': 350.0,
-      'isVegetableOrFruit': false,
-    },
-    {
-      'title': 'Cap',
-      'imagePath': 'assets/images/caps.png',
-      'description': 'Sporty and casual cap',
-      'price': 200.0,
-      'isVegetableOrFruit': false,
-    },
-    {
-      'title': 'Socks',
-      'imagePath': 'assets/images/socks 2.png',
-      'description': 'Warm and comfortable socks',
-      'price': 150.0,
-      'isVegetableOrFruit': false,
-    },
-    {
-      'title': 'Sweater',
-      'imagePath': 'assets/images/sweater.png',
-      'description': 'Cozy and stylish sweater',
-      'price': 500.0,
-      'isVegetableOrFruit': false,
-    },
-  ],
+{
+'title': 'Carrot',
+'imagePath': 'assets/images/carrot.png',
+'description': 'Crunchy and sweet carrots',
+'price': 600.0,
+'isVegetableOrFruit': true,
+},
+{
+'title': 'Cabbage',
+'imagePath': 'assets/images/cabbage.png',
+'description': 'Healthy green cabbage',
+'price': 150.0,
+'isVegetableOrFruit': true,
+},
+{
+'title': 'Cucumber',
+'imagePath': 'assets/images/cucumber.png',
+'description': 'Cool and refreshing cucumbers',
+'price': 300.0,
+'isVegetableOrFruit': true,
+},
+{
+'title': 'Pumpkin',
+'imagePath': 'assets/images/pumpkin.png',
+'description': 'Rich and flavorful pumpkins',
+'price': 250.0,
+'isVegetableOrFruit': true,
+},
+{
+'title': 'Beetroot',
+'imagePath': 'assets/images/beetroot.png',
+'description': 'Fresh and healthy beetroots',
+'price': 300.0,
+'isVegetableOrFruit': true,
+},
+],
+'Fruits': [
+{
+'title': 'Apple',
+'imagePath': 'assets/images/apple.png',
+'description': 'Crispy and sweet apples',
+'price': 200.0,
+'isVegetableOrFruit': true,
+},
+{
+'title': 'Banana',
+'imagePath': 'assets/images/banana.png',
+'description': 'Rich in potassium',
+'price': 600.0,
+'isVegetableOrFruit': true,
+},
+{
+'title': 'Strawberry',
+'imagePath': 'assets/images/strawberry.png',
+'description': 'Fresh strawberries',
+'price': 500.0,
+'isVegetableOrFruit': true,
+},
+{
+'title': 'Grapes',
+'imagePath': 'assets/images/grapes.png',
+'description': 'Juicy grapes',
+'price': 600.0,
+'isVegetableOrFruit': true,
+},
+{
+'title': 'Mango',
+'imagePath': 'assets/images/mango.png',
+'description': 'Sweet mangoes',
+'price': 200.0,
+'isVegetableOrFruit': true,
+},
+{
+'title': 'Avocado',
+'imagePath': 'assets/images/avocado.png',
+'description': 'Creamy and nutritious avocados',
+'price': 700.0,
+'isVegetableOrFruit': true,
+},
+{
+'title': 'Blueberries',
+'imagePath': 'assets/images/blueberries.png',
+'description': 'Fresh and sweet blueberries',
+'price': 900.0,
+'isVegetableOrFruit': true,
+},
+{
+'title': 'Orange',
+'imagePath': 'assets/images/orange.png',
+'description': 'Juicy and tangy oranges',
+'price': 400.0,
+'isVegetableOrFruit': true,
+},
+],
+'Bags': [
+{
+'title': 'Beach Bag',
+'imagePath': 'assets/images/beach_bag.png',
+'description': 'Stylish beach bag',
+'price': 500.0,
+'isVegetableOrFruit': false,
+},
+{
+'title': 'Gift Bag',
+'imagePath': 'assets/images/gift_bag.png',
+'description': 'Beautiful gift bag',
+'price': 200.0,
+'isVegetableOrFruit': false,
+},
+{
+'title': 'Lunch Bag',
+'imagePath': 'assets/images/lunch_bag.png',
+'description': 'Insulated lunch bag',
+'price': 300.0,
+'isVegetableOrFruit': false,
+},
+{
+'title': 'Tote Bag',
+'imagePath': 'assets/images/tote_bag.png',
+'description': 'Versatile tote bag',
+'price': 250.0,
+'isVegetableOrFruit': false,
+},
+{
+'title': 'Bamboo Bag',
+'imagePath': 'assets/images/bamboo_bag.jpeg',
+'description': 'Stylish bamboo bag',
+'price': 2500.0,
+'isVegetableOrFruit': false,
+},
+{
+'title': 'Grocery Bag',
+'imagePath': 'assets/images/grocery_bag.png',
+'description': 'Organic Cotton Grocery bag',
+'price': 1000.0,
+'isVegetableOrFruit': false,
+},
+{
+'title': 'Grocery Bag',
+'imagePath': 'assets/images/grocery.png',
+'description': 'Organic Cotton Grocery Bags',
+'price': 500.0,
+'isVegetableOrFruit': false,
+},
+],
+'Cloths': [
+{
+'title': 'T-shirt',
+'imagePath': 'assets/images/t-shirt.png',
+'description': 'Comfortable cotton t-shirt',
+'price': 300.0,
+'isVegetableOrFruit': false,
+},
+{
+'title': 'Socks',
+'imagePath': 'assets/images/socks.png',
+'description': 'Warm woolen socks',
+'price': 100.0,
+'isVegetableOrFruit': false,
+},
+{
+'title': 'Towels',
+'imagePath': 'assets/images/towels.png',
+'description': 'Soft and absorbent towels',
+'price': 150.0,
+'isVegetableOrFruit': false,
+},
+{
+'title': 'Cotton Cloth',
+'imagePath': 'assets/images/cotton_cloth.png',
+'description': 'High-quality cotton cloth',
+'price': 200.0,
+'isVegetableOrFruit': false,
+},
+{
+'title': 'Hat',
+'imagePath': 'assets/images/hats.jpg',
+'description': 'Stylish and comfortable hat',
+'price': 350.0,
+'isVegetableOrFruit': false,
+},
+{
+'title': 'Cap',
+'imagePath': 'assets/images/caps.png',
+'description': 'Sporty and casual cap',
+'price': 200.0,
+'isVegetableOrFruit': false,
+},
+{
+'title': 'Socks',
+'imagePath': 'assets/images/socks 2.png',
+'description': 'Warm and comfortable socks',
+'price': 150.0,
+'isVegetableOrFruit': false,
+},
+{
+'title': 'Sweater',
+'imagePath': 'assets/images/sweater.png',
+'description': 'Cozy and stylish sweater',
+'price': 500.0,
+'isVegetableOrFruit': false,
+},
+],
 
-  'Kitchen': [
-    {
-      'title': 'Cutlery Set',
-      'imagePath': 'assets/images/cutlery_set.png',
-      'description': 'Stainless steel cutlery set',
-      'price': 1500.0,
-      'isVegetableOrFruit': false,
-    },
-    {
-      'title': 'Cutting Board',
-      'imagePath': 'assets/images/cuttingboard.png',
-      'description': 'Wooden cutting board',
-      'price': 800.0,
-      'isVegetableOrFruit': false,
-    },
-    {
-      'title': 'Plates',
-      'imagePath': 'assets/images/plates.png',
-      'description': 'Elegant dinner plates',
-      'price': 1000.0,
-      'isVegetableOrFruit': false,
-    },
-    {
-      'title': 'Kitchen Utilities',
-      'imagePath': 'assets/images/kitchen_utilities.png',
-      'description': 'Various kitchen utilities',
-      'price': 1200.0,
-      'isVegetableOrFruit': false,
-    },
+'Kitchen': [
+{
+'title': 'Cutlery Set',
+'imagePath': 'assets/images/cutlery_set.png',
+'description': 'Stainless steel cutlery set',
+'price': 1500.0,
+'isVegetableOrFruit': false,
+},
+{
+'title': 'Cutting Board',
+'imagePath': 'assets/images/cuttingboard.png',
+'description': 'Wooden cutting board',
+'price': 800.0,
+'isVegetableOrFruit': false,
+},
+{
+'title': 'Plates',
+'imagePath': 'assets/images/plates.png',
+'description': 'Elegant dinner plates',
+'price': 1000.0,
+'isVegetableOrFruit': false,
+},
+{
+'title': 'Kitchen Utilities',
+'imagePath': 'assets/images/kitchen_utilities.png',
+'description': 'Various kitchen utilities',
+'price': 1200.0,
+'isVegetableOrFruit': false,
+},
 
-    {
-      'title': 'Charcutery Board',
-      'imagePath':'assets/images/charcutery_board.png',
-      'description': 'Round Charcutery Board',
-      'price': 2200.0,
-      'isVegetableOrFruit': false,
-    },
-  ],
-  'HouseHold': [
-    {
-      'title': 'Plant',
-      'imagePath': 'assets/images/plants.jpg',
-      'description': 'Decorative indoor plant',
-      'price': 250.0,
-      'isVegetableOrFruit': false,
-    },
-  ],
+{
+'title': 'Charcutery Board',
+'imagePath':'assets/images/charcutery_board.png',
+'description': 'Round Charcutery Board',
+'price': 2200.0,
+'isVegetableOrFruit': false,
+},
+],
+'HouseHold': [
+{
+'title': 'Plant',
+'imagePath': 'assets/images/plants.jpg',
+'description': 'Decorative indoor plant',
+'price': 250.0,
+'isVegetableOrFruit': false,
+},
+],
 };
 
 class CategoryPage extends StatelessWidget {
@@ -288,16 +289,18 @@ class CategoryPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: appBarColor,
         elevation: 0,
-        title: Text(
+        title: const Text(
           'Categories',
           style: TextStyle(fontSize: 20, color: Colors.white),
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.shopping_cart),
+            icon: const Icon(Icons.shopping_cart),
             onPressed: () {
-              // Handle cart button tap
-              Navigator.pushNamed(context, '/cart');
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CartPage()),
+              );
             },
           ),
         ],
@@ -310,7 +313,7 @@ class CategoryPage extends StatelessWidget {
               decoration: BoxDecoration(
                 color: drawerHeaderColor,
               ),
-              child: Text(
+              child: const Text(
                 'Hi Manumi, Welcome to Eco Mall',
                 style: TextStyle(
                   color: Colors.white,
@@ -329,20 +332,25 @@ class CategoryPage extends StatelessWidget {
               leading: Icon(Icons.feedback, color: drawerTextColor),
               title: Text('Feedback', style: TextStyle(color: drawerTextColor)),
               onTap: () {
-                Navigator.pushNamed(context, '/feedback');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => FeedbackPage()),
+                );
               },
             ),
             ListTile(
               leading: Icon(Icons.favorite, color: drawerTextColor),
               title: Text('Favorite', style: TextStyle(color: drawerTextColor)),
               onTap: () {
-                Navigator.pushNamed(context, '/favorite');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => FavoritePage()),
+                );
               },
             ),
             ListTile(
               leading: Icon(Icons.card_membership, color: drawerTextColor),
-              title: Text(
-                  'Loyalty Programs', style: TextStyle(color: drawerTextColor)),
+              title: Text('Loyalty Programs', style: TextStyle(color: drawerTextColor)),
               onTap: () {
                 Navigator.pushNamed(context, '/loyalty');
               },
@@ -351,7 +359,7 @@ class CategoryPage extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -381,44 +389,31 @@ class CategoryPage extends StatelessWidget {
                     style: TextStyle(color: textColor),
                   ),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 Expanded(
                   flex: 1,
                   child: Image.asset(
-                    'assets/images/logo.png',
-                    // Replace with your logo asset path
-                    height: 60, // Increase the size of the logo
+                    'assets/images/logo.png', // Replace with your logo asset path
+                    height: 60,
                     width: 80,
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             GridView.count(
               crossAxisCount: 2,
               crossAxisSpacing: 10,
               mainAxisSpacing: 10,
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               children: <Widget>[
-                _buildCategoryCard(
-                    'assets/images/vegetables.jpg', 'Vegetables', context,
-                    cardColor!, cardTextColor),
-                _buildCategoryCard(
-                    'assets/images/fruits.jpg', 'Fruits', context, cardColor,
-                    cardTextColor),
-                _buildCategoryCard(
-                    'assets/images/bags.jpg', 'Bags', context, cardColor,
-                    cardTextColor),
-                _buildCategoryCard(
-                    'assets/images/cloths.jpg', 'Cloths', context, cardColor,
-                    cardTextColor),
-                _buildCategoryCard(
-                    'assets/images/kitchen.jpg', 'Kitchen', context, cardColor,
-                    cardTextColor),
-                _buildCategoryCard(
-                    'assets/images/plants.jpg', 'HouseHold', context, cardColor,
-                    cardTextColor),
+                _buildCategoryCard('assets/images/vegetables.jpg', 'Vegetables', context, cardColor!, cardTextColor),
+                _buildCategoryCard('assets/images/fruits.jpg', 'Fruits', context, cardColor, cardTextColor),
+                _buildCategoryCard('assets/images/bags.jpg', 'Bags', context, cardColor, cardTextColor),
+                _buildCategoryCard('assets/images/cloths.jpg', 'Cloths', context, cardColor, cardTextColor),
+                _buildCategoryCard('assets/images/kitchen.jpg', 'Kitchen', context, cardColor, cardTextColor),
+                _buildCategoryCard('assets/images/plants.jpg', 'HouseHold', context, cardColor, cardTextColor),
               ],
             ),
           ],
@@ -453,10 +448,16 @@ class CategoryPage extends StatelessWidget {
               Navigator.pushNamed(context, '/welcome');
               break;
             case 1:
-              Navigator.pushNamed(context, '/cart');
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CartPage()),
+              );
               break;
             case 2:
-              Navigator.pushNamed(context, '/feedback');
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => FeedbackPage()),
+              );
               break;
             case 3:
               Navigator.push(
@@ -476,8 +477,11 @@ class CategoryPage extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) =>
-                CategoryItemPage(items: categoryItems[categoryName] ?? [], categoryName: categoryName, title: '',),
+            builder: (context) => CategoryItemPage(
+              items: categoryItems[categoryName] ?? [],
+              categoryName: categoryName,
+              title: '',
+            ),
           ),
         );
       },
@@ -491,7 +495,7 @@ class CategoryPage extends StatelessWidget {
           children: <Widget>[
             Expanded(
               child: ClipRRect(
-                borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
+                borderRadius: const BorderRadius.vertical(top: Radius.circular(10)),
                 child: Image.asset(
                   imagePath,
                   fit: BoxFit.cover,
