@@ -27,7 +27,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
         title: Text("Register"),
         backgroundColor: isDarkMode ? Colors.green.shade800 : Colors.green,
       ),
-      backgroundColor: isDarkMode ? Colors.black : Colors.white,
+      // Set a light green background color
+      backgroundColor: Colors.lightGreen[100], // Light green background
       body: OrientationBuilder(
         builder: (context, orientation) {
           return Padding(
@@ -45,10 +46,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        // Logo
-        Image.asset(
-          'assets/images/logo.png', // Update this path to your logo's asset path
-          height: 100, // Adjust the height as needed
+        // Logo inside a circular container
+        Container(
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: isDarkMode ? Colors.green.shade800 : Colors.white, // Change this color as needed
+          ),
+          child: ClipOval(
+            child: Image.asset(
+              'assets/images/logo.png', // Update this path to your logo's asset path
+              height: 150, // Increased height for the logo
+              fit: BoxFit.cover, // Ensure the image covers the circular area
+            ),
+          ),
         ),
         SizedBox(height: 20),
         // Username Field
@@ -80,13 +90,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
               _addressController.text,
             );
           },
-          child: Text('Register'),
+          child: Text(
+            'Register',
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           style: ElevatedButton.styleFrom(
-            backgroundColor: isDarkMode ? Colors.green.shade800 : Colors.green,
             padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(20), // More rounded corners
             ),
+            elevation: 5, // Add shadow effect
+            backgroundColor: isDarkMode ? Colors.green.shade900 : Colors.green.shade600, // Background color
+            foregroundColor: Colors.white, // Text color
           ),
         ),
       ],
@@ -102,10 +120,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: Column(
               children: [
-                // Logo
-                Image.asset(
-                  'assets/logo.png', // Update this path to your logo's asset path
-                  height: 100, // Adjust the height as needed
+                // Logo inside a circular container
+                Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: isDarkMode ? Colors.green.shade800 : Colors.white, // Change this color as needed
+                  ),
+                  child: ClipOval(
+                    child: Image.asset(
+                      'assets/images/logo.png', // Update this path to your logo's asset path
+                      height: 150, // Increased height for the logo
+                      fit: BoxFit.cover, // Ensure the image covers the circular area
+                    ),
+                  ),
                 ),
                 SizedBox(height: 20),
                 _buildTextField(_nameController, 'Username', Icons.person, isDarkMode),

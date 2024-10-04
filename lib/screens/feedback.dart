@@ -1,4 +1,4 @@
-import 'dart:io'; // Add this for File
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -54,12 +54,35 @@ class _FeedbackPageState extends State<FeedbackPage> {
     );
   }
 
+  // Build star rating widget
+  Widget _buildStarRating() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: List.generate(5, (index) {
+        return IconButton(
+          icon: Icon(
+            index < _rating ? Icons.star : Icons.star_border,
+            color: Colors.yellow[700] ?? Colors.yellow, // Ensure non-null
+            size: 40,
+          ),
+          onPressed: () {
+            setState(() {
+              _rating = index + 1.0;
+            });
+          },
+        );
+      }),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
-    final primaryColor = isDarkMode ? Colors.blueGrey[900] : Colors.white;
-    final secondaryColor = isDarkMode ? Colors.black : Colors.green;
+    final primaryColor = isDarkMode ? Colors.black87 : Colors.white; // Background color for light and dark mode
+    final secondaryColor = isDarkMode ? Colors.blueGrey[800] ?? Colors.blueGrey : Colors.green; // Button color
     final textColor = isDarkMode ? Colors.white : Colors.black;
+    final buttonColor = isDarkMode ? Colors.tealAccent : Colors.orangeAccent; // Button background color
+    final imageColor = isDarkMode ? Colors.grey[800] ?? Colors.grey : Colors.grey[200]; // Image background color
 
     return Scaffold(
       appBar: AppBar(
@@ -67,7 +90,8 @@ class _FeedbackPageState extends State<FeedbackPage> {
         backgroundColor: secondaryColor,
         centerTitle: true,
       ),
-      body: Padding(
+      body: Container(
+        color: primaryColor, // Set background color
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
           child: Card(
@@ -85,7 +109,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
                     // Add a logo at the top
                     Center(
                       child: Image.asset(
-                        'assets/logo.png', // Adjust the path to your logo
+                        'assets/images/logo.png', // Adjust the path to your logo
                         height: 80,
                       ),
                     ),
@@ -95,23 +119,11 @@ class _FeedbackPageState extends State<FeedbackPage> {
                       style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: textColor),
                     ),
                     SizedBox(height: 16),
-                    Slider(
-                      value: _rating,
-                      min: 1,
-                      max: 5,
-                      divisions: 4,
-                      label: _rating.toString(),
-                      activeColor: secondaryColor,
-                      inactiveColor: isDarkMode ? Colors.white54 : Colors.grey,
-                      onChanged: (newRating) {
-                        setState(() {
-                          _rating = newRating;
-                        });
-                      },
-                    ),
+                    _buildStarRating(),
+                    SizedBox(height: 16),
                     Center(
                       child: Text(
-                        '$_rating / 5',
+                        'Rating: $_rating / 5',
                         style: TextStyle(fontSize: 18, color: textColor),
                       ),
                     ),
@@ -154,25 +166,35 @@ class _FeedbackPageState extends State<FeedbackPage> {
                     SizedBox(height: 8),
                     ElevatedButton(
                       onPressed: _pickImage,
-                      child: Text('Select Image'),
+                      child: Text(
+                        'Select Image',
+                        style: TextStyle(color: Colors.black), // Button text color changed to black
+                      ),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: secondaryColor,
-                        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                        backgroundColor: buttonColor, // Change button color
+                        padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16), // Increased padding
                         textStyle: TextStyle(fontSize: 18),
+                        minimumSize: Size(200, 50), // Increased button width
                       ),
                     ),
                     SizedBox(height: 10),
                     if (_image != null)
-                      Column(
-                        children: [
-                          Image.file(
-                            _image!,
-                            height: 150,
-                            width: 150,
-                            fit: BoxFit.cover,
-                          ),
-                          SizedBox(height: 10),
-                        ],
+                      Container(
+                        decoration: BoxDecoration(
+                          color: imageColor, // Image background color
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Column(
+                          children: [
+                            Image.file(
+                              _image!,
+                              height: 200, // Increased image height
+                              width: 200,  // Increased image width
+                              fit: BoxFit.cover,
+                            ),
+                            SizedBox(height: 10),
+                          ],
+                        ),
                       ),
                     SizedBox(height: 20),
                     Center(
@@ -191,14 +213,18 @@ class _FeedbackPageState extends State<FeedbackPage> {
                             });
                           }
                         },
-                        child: Text('Submit'),
+                        child: Text(
+                          'Submit',
+                          style: TextStyle(color: Colors.black), // Button text color changed to black
+                        ),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: secondaryColor,
-                          padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                          backgroundColor: Colors.orangeAccent, // Change button color to a brighter shade
+                          padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16), // Increased padding
                           textStyle: TextStyle(fontSize: 18),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
+                          minimumSize: Size(200, 50), // Increased button width
                         ),
                       ),
                     ),

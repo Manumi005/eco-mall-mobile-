@@ -14,10 +14,9 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Login"),
-        backgroundColor: isDarkMode ? Colors.green.shade800 : Colors.green,
+        backgroundColor: isDarkMode ? Colors.green.shade800 : Colors.green.shade400, // Light green
       ),
-      // Set background color based on the mode
-      backgroundColor: isDarkMode ? Colors.black : Colors.white,
+      backgroundColor: isDarkMode ? Colors.black : Colors.green.shade50, // Light green background
       body: OrientationBuilder(
         builder: (context, orientation) {
           return Padding(
@@ -32,116 +31,127 @@ class LoginScreen extends StatelessWidget {
   }
 
   Widget _buildPortraitLayout(BuildContext context, bool isDarkMode) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        // Logo
-        Container(
-          height: 150,
-          width: 150,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: isDarkMode ? Colors.grey[800] : Colors.green.shade400,
-          ),
-          child: ClipOval(
-            child: Image.asset(
-              'assets/images/logo.png', // Ensure the correct path to your logo asset
-              fit: BoxFit.cover,
+    return Center(
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Logo
+            Container(
+              height: 120,
+              width: 120,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: isDarkMode ? Colors.grey[800] : Colors.green.shade300, // Light green for logo background
+              ),
+              child: ClipOval(
+                child: Image.asset(
+                  'assets/images/logo.png', // Ensure the correct path to your logo asset
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
-          ),
-        ),
-        SizedBox(height: 20),
-        // Title
-        Text(
-          'Login to Your Account',
-          style: TextStyle(
-            color: isDarkMode ? Colors.green.shade200 : Colors.green.shade900,
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-          ),
-          textAlign: TextAlign.center,
-        ),
-        SizedBox(height: 20),
-        // Form Container
-        Container(
-          padding: EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            color: isDarkMode ? Colors.grey[850] : Colors.grey[200],
-            borderRadius: BorderRadius.circular(12),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black26,
-                blurRadius: 10.0,
-                offset: Offset(0, 4),
+            SizedBox(height: 20),
+            // Title
+            Text(
+              'Login to Your Account',
+              style: TextStyle(
+                color: isDarkMode ? Colors.green.shade200 : Colors.green.shade900, // Light green text
+                fontSize: 26,
+                fontWeight: FontWeight.bold,
               ),
-            ],
-          ),
-          child: Column(
-            children: [
-              // Email Field
-              TextField(
-                controller: _emailController,
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                  labelStyle: TextStyle(color: isDarkMode ? Colors.white70 : Colors.black),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide(color: isDarkMode ? Colors.white70 : Colors.black),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 20),
+            // Form Container
+            Container(
+              padding: EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: isDarkMode ? Colors.grey[850] : Colors.green.shade100, // Light green for form background
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black26,
+                    blurRadius: 10.0,
+                    offset: Offset(0, 4),
                   ),
-                  filled: true,
-                  fillColor: isDarkMode ? Colors.grey[850] : Colors.grey[200],
-                  prefixIcon: Icon(Icons.email, color: isDarkMode ? Colors.white70 : Colors.black),
-                ),
-                style: TextStyle(color: isDarkMode ? Colors.white : Colors.black),
+                ],
               ),
-              SizedBox(height: 20),
-              // Password Field
-              TextField(
-                controller: _passwordController,
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                  labelStyle: TextStyle(color: isDarkMode ? Colors.white70 : Colors.black),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide(color: isDarkMode ? Colors.white70 : Colors.black),
+              child: Column(
+                children: [
+                  // Email Field
+                  _buildTextField(
+                    controller: _emailController,
+                    label: 'Email',
+                    isDarkMode: isDarkMode,
+                    icon: Icons.email,
                   ),
-                  filled: true,
-                  fillColor: isDarkMode ? Colors.grey[850] : Colors.grey[200],
-                  prefixIcon: Icon(Icons.lock, color: isDarkMode ? Colors.white70 : Colors.black),
-                ),
-                obscureText: true,
-                style: TextStyle(color: isDarkMode ? Colors.white : Colors.black),
-              ),
-              SizedBox(height: 20),
-              // Login Button
-              ElevatedButton(
-                onPressed: () async {
-                  await _login(context); // Pass context here
-                },
-                child: Text('Login'),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: isDarkMode ? Colors.green.shade800 : Colors.green.shade400,
-                  padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
+                  SizedBox(height: 16),
+                  // Password Field
+                  _buildTextField(
+                    controller: _passwordController,
+                    label: 'Password',
+                    isDarkMode: isDarkMode,
+                    icon: Icons.lock,
+                    obscureText: true,
                   ),
-                ),
+                  SizedBox(height: 20),
+                  // Login Button
+                  ElevatedButton(
+                    onPressed: () async {
+                      await _login(context); // Pass context here
+                    },
+                    child: Text('Login'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: isDarkMode ? Colors.green.shade800 : Colors.green.shade400, // Light green for button
+                      padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  // Sign Up Redirect
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/register');
+                    },
+                    child: Text(
+                      'Don\'t have an account? Register here!',
+                      style: TextStyle(color: isDarkMode ? Colors.green.shade300 : Colors.green.shade900), // Light green for text
+                    ),
+                  ),
+                ],
               ),
-              SizedBox(height: 10),
-              // Sign Up Redirect
-              TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/register');
-                },
-                child: Text(
-                  'Don\'t have an account? Register here!',
-                  style: TextStyle(color: isDarkMode ? Colors.white : Colors.green.shade900),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
-      ],
+      ),
+    );
+  }
+
+  Widget _buildTextField({
+    required TextEditingController controller,
+    required String label,
+    required bool isDarkMode,
+    required IconData icon,
+    bool obscureText = false,
+  }) {
+    return TextField(
+      controller: controller,
+      decoration: InputDecoration(
+        labelText: label,
+        labelStyle: TextStyle(color: isDarkMode ? Colors.white70 : Colors.black),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: isDarkMode ? Colors.white70 : Colors.black),
+        ),
+        filled: true,
+        fillColor: isDarkMode ? Colors.grey[850] : Colors.green.shade50, // Light green for fill color
+        prefixIcon: Icon(icon, color: isDarkMode ? Colors.white70 : Colors.black),
+      ),
+      obscureText: obscureText,
+      style: TextStyle(color: isDarkMode ? Colors.white : Colors.black),
     );
   }
 
@@ -153,20 +163,11 @@ class LoginScreen extends StatelessWidget {
         Expanded(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: TextField(
+            child: _buildTextField(
               controller: _emailController,
-              decoration: InputDecoration(
-                labelText: 'Email',
-                labelStyle: TextStyle(color: isDarkMode ? Colors.white70 : Colors.black),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide(color: isDarkMode ? Colors.white70 : Colors.black),
-                ),
-                filled: true,
-                fillColor: isDarkMode ? Colors.grey[850] : Colors.grey[200],
-                prefixIcon: Icon(Icons.email, color: isDarkMode ? Colors.white70 : Colors.black),
-              ),
-              style: TextStyle(color: isDarkMode ? Colors.white : Colors.black),
+              label: 'Email',
+              isDarkMode: isDarkMode,
+              icon: Icons.email,
             ),
           ),
         ),
@@ -174,21 +175,12 @@ class LoginScreen extends StatelessWidget {
         Expanded(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: TextField(
+            child: _buildTextField(
               controller: _passwordController,
-              decoration: InputDecoration(
-                labelText: 'Password',
-                labelStyle: TextStyle(color: isDarkMode ? Colors.white70 : Colors.black),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide(color: isDarkMode ? Colors.white70 : Colors.black),
-                ),
-                filled: true,
-                fillColor: isDarkMode ? Colors.grey[850] : Colors.grey[200],
-                prefixIcon: Icon(Icons.lock, color: isDarkMode ? Colors.white70 : Colors.black),
-              ),
+              label: 'Password',
+              isDarkMode: isDarkMode,
+              icon: Icons.lock,
               obscureText: true,
-              style: TextStyle(color: isDarkMode ? Colors.white : Colors.black),
             ),
           ),
         ),
@@ -228,7 +220,7 @@ class LoginScreen extends StatelessWidget {
       case 'wrong-password':
         return 'Wrong password provided for that user.';
       default:
-        return 'An undefined Error happened.';
+        return 'An undefined error occurred.';
     }
   }
 
