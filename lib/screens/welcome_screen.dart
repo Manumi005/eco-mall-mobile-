@@ -14,7 +14,7 @@ class WelcomeScreen extends StatelessWidget {
           child: Container(
             // Gray box to contain the content
             decoration: BoxDecoration(
-              color: isDarkMode ? Colors.grey[850] : Colors.grey[200], // Box color based on theme
+              color: isDarkMode ? Colors.grey[850] : Colors.lightGreen[100], // Light green for light mode
               borderRadius: BorderRadius.circular(12),
               boxShadow: [
                 BoxShadow(
@@ -62,7 +62,10 @@ class WelcomeScreen extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
                     },
-                    child: Text("Get Started"),
+                    child: Text(
+                      "Get Started",
+                      style: TextStyle(color: Colors.black), // Black text for the button
+                    ),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: isDarkMode ? Colors.green.shade800 : Colors.green.shade400, // Button color based on mode
                     ),
@@ -74,7 +77,7 @@ class WelcomeScreen extends StatelessWidget {
           ),
         ),
       ),
-      backgroundColor: isDarkMode ? Colors.black : Colors.white, // Background color based on mode
+      backgroundColor: isDarkMode ? Colors.black : Colors.lightGreen[50], // Light green background for light mode
     );
   }
 }
