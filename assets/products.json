@@ -1,0 +1,31 @@
+[
+  {
+    "name": "Vegetables",
+    "image": "vegetables.jpg"
+  },
+  {
+    "name": "Fruits",
+    "image": "fruits.jpg"
+  },
+  {
+    "name": "Bags",
+    "image": "bags.jpg"
+  },
+  {
+    "name": "Cloths",
+    "image": "cloths.jpg"
+  },
+  {
+    "name": "Homeware Accessories",
+    "image": "kitchen.jpg"
+  },
+  {
+    "name": "Plants",
+    "image": "plants.jpg"
+  },
+  {
+    "name": "Hats",
+    "image": "hats.jpg"
+  }
+]
+

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "654531668513",
+    "project_id": "eco-mall-system-d57ae",
+    "storage_bucket": "eco-mall-system-d57ae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:654531668513:android:20123274e00b9360ecd160",
+        "android_client_info": {
+          "package_name": "com.example.eco_mall_system"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqlSIp4fN4vZcz9-zplr0_TLYstHrp4cA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
